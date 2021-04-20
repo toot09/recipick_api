@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import requests
 import json 
 
@@ -56,6 +56,11 @@ def basic(productName=None):
             imgurl = 'http://'+ resultData.get("imgurl")
 
     return render_template("index.html", content=json_string, productName = productName, productConcept = productConcept, productTopN = productTopN, jsonArray= jsonArray) 
+
+
+@app.route('/img/<path:file>', methods=['GET', 'POST'])
+def image(file):
+   return send_from_directory(directory='img',filename=file)
 
 
 if __name__ == '__main__':
