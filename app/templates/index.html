@@ -3,22 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <title>TEST</title>
+    <style>
+
+        table th {
+            font-weight: normal; }
+
+        table td {
+            border-bottom:solid 1px #f8f8f8;
+        }
+
+        table > thead > tr > th,
+        table > tbody > tr > th,
+        table > tfoot > tr > th,
+        table > thead > tr > td,
+        table > tbody > tr > td,
+        table > tfoot > tr > td {
+            padding: 5px; 
+            border: 1px solid #000000;
+        }
+
+        table thead tr th {
+            font-size: 15px;
+            color: #121212;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            background: #aaaaaa;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <div class = 'page-header'>
-        <h1>식품추천API TEST</h1>
-        <hr/>
+        <h1>RECIPICK TEST</h1>
     </div>
     <form action = "/basic" method = "POST">
-        <p><h5>제품명: <input type = "text" name = "productName" /> &nbsp컨셉: <input type = "text" name = "productConcept" /> 
-            &nbsp추천 갯수(최대5개):
-        <select name="productTopN">
-            <option value="1">1개</option>
-            <option value="2">2개</option>
-            <option value="3">3개</option>
-            <option value="4">4개</option>
-            <option value="5">5개</option>
-        </select>
+        <p><h5>[제품명]: <input type = "text" name = "productName" /> <br/>
+           <!-- &nbsp컨셉: <input type = "text" name = "productConcept" /> -->
+            [컨셉]
+            <br/> 
+            청년층<input type = "checkbox" name = "productConcept[]" value="청년층" />  노년층<input type = "checkbox" name = "productConcept[]" value="노년층" /> 
+            <br/>아침식사<input type = "checkbox" name = "productConcept[]" value="아침식사" />  야식<input type = "checkbox" name = "productConcept[]" value="야식" /> 
+            <br/>한국<input type = "checkbox" name = "productConcept[]" value="한국" />  일본<input type = "checkbox" name = "productConcept[]" value="일본" /> 프랑스<input type = "checkbox" name = "productConcept" value="프랑스" /> 
+            <br/>비건<input type = "checkbox" name = "productConcept[]" value="비건" />  다이어트<input type = "checkbox" name = "productConcept[]" value="다이어트" /> 
+            <br/>파티<input type = "checkbox" name = "productConcept[]" value="파티" /> 
+            <br/><br/>[추천 갯수]:
+            <select name="productTopN">
+                <option value="1">1개</option>
+                <option value="2">2개</option>
+                <option value="3">3개</option>
+                <option value="4">4개</option>
+                <option value="5">5개</option>
+            </select>
         &nbsp&nbsp <input type = "submit" value = "submit" /></h5></p>
      </form>
 
@@ -32,14 +68,22 @@
                     <h5>결과값이 존재하지 않습니다</h5>
                 {% else %}
                     <h5>json전문 {{ content }}입니다.</h5>
-                    <!--                 
-                    <h5>추천 식품은 {{ product }}입니다.</h5>
-                    <img src ="{{ imgurl }}"> 
-                    -->
-                    {% for arr in jsonArray %}
-                    <h5>추천 식품은 {{ arr["product"] }}입니다.</h5>
-                    <img src ="{{ 'http://'+ arr["imgurl"] }}">
-                    {% endfor %}
+                    <table>
+                        <thead>
+                          <tr>
+                          <th>추천식품명</th>
+                          <th>이미지</th>
+                          </tr>
+                          </thead>
+                          <tbody>
+                                {% for arr in jsonArray %}
+                                <tr>
+                                 <td><h5>{{ arr["product"] }}</h5></td>
+                                 <td><img src ="{{ 'http://'+ arr["imgurl"] }}"></td>
+                               </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>                            
                 {% endif %}
             {% endif %}
         </p>
