@@ -21,7 +21,7 @@ def basic(productName=None):
     print("productName : ",productName)
     print("productConcept : ",productConcept)
     print("productTopN : ",productTopN)
-   # return productName
+   # return productName 
 
 #################### 연관식품추천API 연동테스트
     headers = {'Content-Type': 'application/json; chearset=utf-8'}
