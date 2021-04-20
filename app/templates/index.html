@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TEST</title>
+</head>
+<body>
+    <div class = 'page-header'>
+        <h1>식품추천API TEST</h1>
+        <hr/>
+    </div>
+    <form action = "/basic" method = "POST">
+        <p><h5>제품명: <input type = "text" name = "productName" /> &nbsp컨셉: <input type = "text" name = "productConcept" /> 
+            &nbsp추천 갯수(최대3개):
+        <select name="productTopN">
+            <option value="1">1개</option>
+            <option value="2">2개</option>
+            <option value="3">3개</option>
+        </select>
+        &nbsp&nbsp <input type = "submit" value = "submit" /></h5></p>
+     </form>
+
+     <div>
+        <p>
+            {% if productName == None %}
+                <h5> 아직 아무 값도 입력이 안되었습니다. </h5>
+            {% else %}
+                <h5> {{productName}}, {{productConcept}}, {{productTopN}} 을 입력받았습니다. </h5>
+                {% if jsonArray == None %}
+                    <h5>결과값이 존재하지 않습니다</h5>
+                {% else %}
+                    <h5>json전문 {{ content }}입니다.</h5>
+                    <!--                 
+                    <h5>추천 식품은 {{ product }}입니다.</h5>
+                    <img src ="{{ imgurl }}"> 
+                    -->
+                    {% for arr in jsonArray %}
+                    <h5>추천 식품은 {{ arr["product"] }}입니다.</h5>
+                    <img src ="{{ 'http://'+ arr["imgurl"] }}">
+                    {% endfor %}
+                {% endif %}
+            {% endif %}
+        </p>
+    </div>
+</body>
+</html>
