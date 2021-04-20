@@ -5,7 +5,7 @@ import json
 app = Flask(__name__)
 
 @app.route('/')
-
+ 
 def test(productName=None):
     return render_template('index.html', productName=productName)
 
