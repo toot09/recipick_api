@@ -15,8 +15,8 @@ def basic(productName=None):
     #return render_template('index.html', productName=productName)
 
     productName = request.form['productName']
-    productConcept = []
-    productConcept = request.form['productConcept']
+    #추천컨셉은 여러개 입력가능
+    productConcept = request.form.getlist('productConcept[]')
     productTopN = request.form['productTopN']
     print("productName : ",productName)
     print("productConcept : ",productConcept)
@@ -31,7 +31,7 @@ def basic(productName=None):
         "product": productName,
         "userContext": 
           #  {"concept": ["다이어트"]},
-            {"concept": [productConcept] },
+            {"concept": productConcept },
         #"topn": "3"
         "topn": productTopN
         }
