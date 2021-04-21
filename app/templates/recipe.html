@@ -147,24 +147,23 @@
                         {% for arr in jsonArray %}
                             <tr style="background: #aaaaaa;text-align: center;">
                                 <th><h5 style="text-align: center;">{{ arr["recipe"] }}</h5></th>
-                                {% for rp in arr["relatedProduct"] %}
-                                    {% if rp["product"] == None %}
-                                        <th><h5>N/A</h5></th>
+                                {% if arr["relatedProduct"] == [] %}
+                                    <th></th>
                                     {% else %}
-                                        <th><h5 style="text-align: center;">{{ rp["product"] }}</h5></th>
+                                        {% for rp in arr["relatedProduct"] %}
+                                            <th><h5 style="text-align: center;">{{ rp["product"] }}</h5></th>
+                                        {% endfor %}
                                     {% endif %}
-                                {% endfor %}
-                            </tr>
-                            <tr>
-                                <th><h5>{{ arr["recipeDetail"] }}</h5></th>
-                                {% for rp in arr["relatedProduct"] %}
-                                    {% if rp["product"] == None %}
-                                        <th><h5>N/A</h5></th>
+                                </tr>
+                                <tr>
+                                    <th><h5>{{ arr["recipeDetail"] }}</h5></th>
+                                    {% if arr["relatedProduct"] == [] %}
+                                    <th><h5 style="text-align: center;">N/A</h5></th>
                                     {% else %}
-                                        <th><img src ="{{ 'http://'+ rp["imgurl"] }}"></th>
-                                    {% endif %}
-                                
-                                {% endfor %}
+                                        {% for rp in arr["relatedProduct"] %}
+                                                <th><img src ="{{ 'http://'+ rp["imgurl"] }}"></th>                                
+                                        {% endfor %}
+                                {% endif %}
                             </tr>
                         {% endfor %}
                     </table>                             
