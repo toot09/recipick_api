@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_from_directory
 import requests
 import json 
 
@@ -110,11 +110,15 @@ def recipe(productName=None):
     if jsonArray is not None:
         for resultData in jsonArray :
             #product = resultData.get("product")
-            print("resultData : ",resultData)
-            #recipe = resultData["recipe"]
-            #imgurl = 'http://'+ resultData.get("imgurl")
-
+            #print("resultData : ",resultData)
+            print(productName)
+            #print(resultData.get("relatedProduct"))
     return render_template("recipe.html", content=json_string, productName = productName, productConcept = productConcept, productTopN = productTopN, ingredientName = ingredientName, jsonArray= jsonArray) 
+
+
+@app.route('/img/<path:file>', methods=['GET', 'POST'])
+def image(file):
+   return send_from_directory(directory='img',filename=file)
 
 
 if __name__ == '__main__':

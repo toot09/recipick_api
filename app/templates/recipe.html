@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>TEST</title>
+    <title>레시피 추천</title>
     <style>
 
         table th {
@@ -30,48 +30,85 @@
             background: #aaaaaa;
             text-align: center;
         }
+        text, a  {
+            font-size: 20px;
+            font : "CJ ONLYONE NEW 제목 OTF";
+            color: #121212;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            text-align: center;
+        }
+        h5 {
+            font-size: 15px;
+            font : "CJ ONLYONE NEW 제목";
+            color: #121212;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 0.05em;
+            text-align: left;
+        }
     </style>
           <nav>
-            <a href="/">상품</a>
-            <a href="/recipe">레시피</a>
+            <a href="/"><img src="img/food.png" style="width:80px;height:80px;"></a>
+            <a href="/recipe"><img src="img/recipe.png" style="width:80px;height:80px;"></a>
           </nav>
 </head>
 <body>
     <div class = 'page-header'>
-        <h1>RECIPICK TEST</h1>
+        <img src="img/title.jpg">
+        <FONT SIZE=4 FACE="CJ ONLYONE NEW 제목 OTF"><B>레시피 추천 API</text>
+        <hr/>
     </div>
-    <h2>레시피</h2>
+    </div> 
+    <FONT SIZE=6 FACE="CJ ONLYONE NEW 제목 OTF"><B>추천받을 레시피의 내용을 입력해주세요.</text>
+    </div>
     <form action = "/recipe" method = "POST">
-        <p><h5>[제품명]: <input type = "text" name = "productName" /> <br/><br/>
-           <!-- &nbsp컨셉: <input type = "text" name = "productConcept" /> -->
-            [식재료]
-            <br/> 
-            당근<input type = "checkbox" name = "ingredientName[]" value="당근" />  양파<input type = "checkbox" name = "ingredientName[]" value="양파" /> 
-            <br/>돼지고기<input type = "checkbox" name = "ingredientName[]" value="돼지고기" />  소고기<input type = "checkbox" name = "ingredientName[]" value="소고기" /> 
-            <br/>한국<input type = "checkbox" name = "ingredientName[]" value="한국" />  일본<input type = "checkbox" name = "ingredientName[]" value="일본" /> 프랑스<input type = "checkbox" name = "ingredientName[]" value="프랑스" /> 
-            <br/>비건<input type = "checkbox" name = "ingredientName[]" value="비건" />  다이어트<input type = "checkbox" name = "ingredientName[]" value="다이어트" /> 
-            <br/>파티<input type = "checkbox" name = "ingredientName[]" value="파티" /> 
-            <br/><br/>[컨셉]
-            <br/> 
-            청년층<input type = "checkbox" name = "productConcept[]" value="청년층" />  노년층<input type = "checkbox" name = "productConcept[]" value="노년층" /> 
-            <br/>아침식사<input type = "checkbox" name = "productConcept[]" value="아침식사" />  야식<input type = "checkbox" name = "productConcept[]" value="야식" /> 
-            <br/>한국<input type = "checkbox" name = "productConcept[]" value="한국" />  일본<input type = "checkbox" name = "productConcept[]" value="일본" /> 프랑스<input type = "checkbox" name = "productConcept[]" value="프랑스" /> 
-            <br/>비건<input type = "checkbox" name = "productConcept[]" value="비건" />  다이어트<input type = "checkbox" name = "productConcept[]" value="다이어트" /> 
-            <br/>파티<input type = "checkbox" name = "productConcept[]" value="파티" /> 
-            <br/><br/>[추천 갯수]:
-            <select name="productTopN">
-                <option value="1">1개</option>
-                <option value="2">2개</option>
-                <option value="3">3개</option>
-                <option value="4">4개</option>
-                <option value="5">5개</option>
-            </select>
-        &nbsp&nbsp <input type = "submit" value = "submit" /></h5></p>
+        <p><h5><text>[제품명]</text>
+        <br/><input type = "text" name = "productName" /> <br/>
+        <!-- &nbsp컨셉: <input type = "text" name = "productConcept" /> -->
+
+        <br/><br/><text>[컨셉]</text>
+        <br/> 
+        <text>청년층</text><input type = "checkbox" name = "productConcept[]" value="청년층" />  
+        <text>노년층</text><input type = "checkbox" name = "productConcept[]" value="노년층" /> 
+        <text>아침식사</text><input type = "checkbox" name = "productConcept[]" value="아침식사" />  
+        <text>야식</text><input type = "checkbox" name = "productConcept[]" value="야식" /> 
+        <text>다이어트</text><input type = "checkbox" name = "productConcept[]" value="다이어트" /> 
+        <br/><text>한국</text><input type = "checkbox" name = "productConcept[]" value="한국" />  
+        <text>일본</text><input type = "checkbox" name = "productConcept[]" value="일본" /> 
+        <text>프랑스</text><input type = "checkbox" name = "productConcept" value="프랑스" /> 
+        <text>비건</text><input type = "checkbox" name = "productConcept[]" value="비건" />  
+        <text>파티</text><input type = "checkbox" name = "productConcept[]" value="파티" />
+
+        <br/><br/><text>[식재료]</text>
+        <br/> 
+        <text>당근<input type = "checkbox" name = "ingredientName[]" value="당근" />  </text>
+        <text>양파<input type = "checkbox" name = "ingredientName[]" value="양파" /> </text>
+        <text>돼지고기<input type = "checkbox" name = "ingredientName[]" value="돼지고기" />  </text>
+        <text>소고기<input type = "checkbox" name = "ingredientName[]" value="소고기" /> </text>
+        <text>비건<input type = "checkbox" name = "ingredientName[]" value="비건" />  </text>
+        </br><text>한국<input type = "checkbox" name = "ingredientName[]" value="한국" />  </text>
+        <text>일본<input type = "checkbox" name = "ingredientName[]" value="일본" /> </text>
+        <text>프랑스<input type = "checkbox" name = "ingredientName[]" value="프랑스" /> </text>
+        <text>다이어트<input type = "checkbox" name = "ingredientName[]" value="다이어트" /> </text>
+        <text>파티<input type = "checkbox" name = "ingredientName[]" value="파티" /> </text>
+        
+        <br/><br/><text>[추천 갯수] </text>
+        <br/>
+        <select name="productTopN" style="width:100px;height:50px;">
+            <option value="1">1개</option>
+            <option value="2">2개</option>
+            <option value="3">3개</option>
+            <option value="4">4개</option>
+            <option value="5">5개</option>
+        </select>
+        &nbsp&nbsp <input type = "image" value = "submit" src="img/search.jpg"/></h5></p>
      </form>
 
      <div>
         <p>
-            {% if productName == None %}
+            {% if productName is not defined %}
                 <h5> 아직 아무 값도 입력이 안되었습니다. </h5>
             {% else %}
                 <h5> {{productName}}, {{ingredientName}}, {{productConcept}}, {{productTopN}} 을 입력받았습니다. </h5>
@@ -80,31 +117,30 @@
                 {% else %}
                     <h5>json전문 {{ content }}입니다.</h5>
                     <table>
-                        <thead>
-                          <tr>
-                          <th>레시피명</th>
-                          <th>레시피 상세</th>
-                          <th>연관 상품</th>
-                          <th>연관 상품 이미지</th>
-                          </tr>
-                          </thead>
-                          <tbody>
-                                {% for arr in jsonArray %}
-                                <tr>
-                                 <td><h5>{{ arr["recipe"] }}</h5></td>
-                                 <td><h5>{{ arr["recipeDetail"] }}</h5></td>
-                                    {% for rp in arr["relatedProduct"] %}
-                                        {% if rp["product"] == None %}
-                                            <td><h5>N/A</h5></td>
-                                            <td><h5>N/A</h5></td>
-                                        {% else %}
-                                            <td><h5>{{ rp["product"] }}</h5></td>
-                                            <td><img src ="{{ 'http://'+ rp["imgurl"] }}"></td>
-                                        {% endif %}
-                                    {% endfor %}
-                               </tr>
-                            {% endfor %}
-                        </tbody>
+                        
+                        {% for arr in jsonArray %}
+                            <tr style="background: #aaaaaa;text-align: center;">
+                                <th><h5 style="text-align: center;">{{ arr["recipe"] }}</h5></th>
+                                {% for rp in arr["relatedProduct"] %}
+                                    {% if rp["product"] == None %}
+                                        <th><h5>N/A</h5></th>
+                                    {% else %}
+                                        <th><h5 style="text-align: center;">{{ rp["product"] }}</h5></th>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                            <tr>
+                                <th><h5>{{ arr["recipeDetail"] }}</h5></th>
+                                {% for rp in arr["relatedProduct"] %}
+                                    {% if rp["product"] == None %}
+                                        <th><h5>N/A</h5></th>
+                                    {% else %}
+                                        <th><img src ="{{ 'http://'+ rp["imgurl"] }}"></th>
+                                    {% endif %}
+                                
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
                     </table>                             
                 {% endif %}
             {% endif %}
